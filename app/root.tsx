@@ -1,45 +1,46 @@
 import {
+  Form,
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 
-import "./tailwind.css";
+import appStylesHref from "./app.css?url";
+import { getUserId } from "./utils/session.server";
 
 export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
+  { rel: "stylesheet", href: appStylesHref },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const userId = await getUserId(request);
+
+  // If no session and NOT on the login page, redirect to login
+  if (!userId && new URL(request.url).pathname !== "/login") {
+    return redirect("/login");
+  }
+
+  return null; // Allow access if logged in or on the login page
+};
+
+export default function App() {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <Meta />
         <Links />
       </head>
       <body>
-        {children}
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }

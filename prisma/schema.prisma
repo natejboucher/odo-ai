@@ -10,7 +10,7 @@ generator client {
 // Example user model (you can add more later)
 model User {
   id        String   @id @default(uuid())
-  email     String   @unique
+  userName     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

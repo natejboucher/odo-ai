@@ -5,9 +5,9 @@
     "remix:dev": "remix dev",
     "remix:build": "remix build",
     "remix:start": "remix-serve build",
-    "dev": "remix dev",
+    "dev": "node -r dotenv/config ./node_modules/@remix-run/dev/dist/cli.js dev",
     "build": "remix build",
-    "start": "remix-serve build/index.js"
+    "start": "PORT=3000 node -r dotenv/config ./node_modules/@remix-run/serve/dist/cli.js build/index.js"
   },
   "dependencies": {
     "@prisma/client": "^6.3.0",
@@ -15,6 +15,7 @@
     "@react-router/node": "^7.1.4",
     "@remix-run/node": "^2.15.3",
     "compression": "^1.7.5",
+    "dotenv": "^16.4.7",
     "drizzle-orm": "~0.36.3",
     "express": "^4.21.1",
     "isbot": "^5.1.17",
@@ -44,6 +45,7 @@
     "@types/react-dom": "^18.3.5",
     "autoprefixer": "^10.4.20",
     "bcryptjs": "^2.4.3",
+    "cross-env": "^7.0.3",
     "dotenv-cli": "^7.4.3",
     "drizzle-kit": "~0.28.1",
     "postcss": "^8.4.31",

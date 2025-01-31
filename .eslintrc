@@ -1,11 +1,10 @@
 {
-    "settings": {
-      "import/resolver": {
-        "alias": {
-          "map": [["~", "./app"]],
-          "extensions": [".ts", ".tsx", ".js", ".jsx"]
-        }
-      }
-    }
-  }
-  
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["~", "./app"]],
+        "extensions": [".ts", ".tsx", ".js", ".jsx"],
+      },
+    },
+  },
+}

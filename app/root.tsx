@@ -8,12 +8,12 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 
-// import tailwindStyles from "~/tailwind.css?url";
+import styles from "./tailwind.css";
 import { getUserId } from "./utils/session.server";
 
-// export const links: LinksFunction = () => [
-//   { rel: "stylesheet", href: tailwindStyles },
-// ];
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: styles },
+];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const userId = await getUserId(request);

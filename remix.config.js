@@ -1,9 +1,11 @@
-// remix.config.mjs (ESM)
+// remix.config.js (CommonJS)
 /**
  * @type {import('@remix-run/dev').AppConfig}
  */
-export default {
+module.exports = {
   appDirectory: "app",
   publicPath: "/build/",
-  serverBuildPath: "build/index.js"
+  serverBuildPath: "build/index.js",
+  tailwind: true,
+  serverModuleFormat: "cjs"
 };

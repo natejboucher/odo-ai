@@ -1,1 +1,0 @@
-import{d as e,k as r}from"/build/_shared/chunk-NVXVX3XK.js";import{d as t}from"/build/_shared/chunk-2QEWK57A.js";var o=t(r(),1);function u(){return(0,o.jsxs)("div",{children:[(0,o.jsx)("p",{children:"Hello World"}),(0,o.jsx)(e,{method:"post",action:"/logout",children:(0,o.jsx)("button",{type:"submit",children:"Logout"})})]})}export{u as default};
